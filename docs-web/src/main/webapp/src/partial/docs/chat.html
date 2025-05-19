@@ -1,0 +1,36 @@
+
+<div class="panel panel-default">
+  <div class="panel-body" style="height:300px; overflow-y:auto;">
+    <div ng-show="!chatMessages || chatMessages.length == 0" class="text-center text-muted">
+      <h1 class="fas fa-comments"></h1>
+      <p ng-show="!chatMessages && !chatMessagesError">{{ 'loading' | translate }}</p>
+      <p ng-show="chatMessages.length == 0">{{ 'chat.no_chat' | translate }}</p>
+      <p ng-show="!chatMessages && chatMessagesError">{{ 'chat.error_loading_chat' | translate }}</p>
+    </div>
+  </div>
+
+  <div ng-repeat="message in chatMessages" class="media" style="overflow: hidden">
+    <div class="pull-left">
+      <img ng-src="https://www.gravatar.com/avatar/{{ comment.creator_gravatar }}?s=40&d=identicon" class="media-object" />
+    </div>
+    <div class="media-body">
+      <strong>{{ message.creator }}</strong>
+      <p>
+        {{ message.content }}<br />
+        <span class="text-muted">{{ message.create_date | timeAgo: dateTimeFormat }}</span>
+      <span class="text-muted pull-right btn-link pointer"
+            ng-show="document.writable || userInfo.username == message.creator"
+            ng-click="deleteMessage(message)">
+        <span class="fas fa-times"></span>
+      </span>
+      </p>
+    </div>
+  </div>
+
+  <form ng-submit="sendMessage()">
+    <div class="form-group">
+      <label class="sr-only" for="messageInput">{{ 'chat.send_message' | translate }}</label>
+      <input type="text" class="form-control" id="messageInput" ng-model="newChatMessage" ng-attr-placeholder="{{ 'chat.send_message' | translate }}">
+    </div>
+  </form>
+</div>

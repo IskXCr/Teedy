@@ -32,6 +32,7 @@
     "nav_documents": "Documents",
     "nav_tags": "Tags",
     "nav_users_groups": "Utilisateurs & Groupes",
+    "nav_chat": "Chat",
     "error_info": "{{ count }} nouvelle{{ count > 1 ? 's' : '' }} erreur{{ count > 1 ? 's' : '' }}",
     "logged_as": "Connecté en tant que {{ username }}",
     "nav_settings": "Paramètres",

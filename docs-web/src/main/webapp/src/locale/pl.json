@@ -32,6 +32,7 @@
     "nav_documents": "Dokumenty",
     "nav_tags": "Etykiety",
     "nav_users_groups": "Użytkownicy i Grupy",
+    "nav_chat": "Pogawędzić",
     "error_info": "{{ count }} nowe błędy",
     "logged_as": "Zalogowany jako {{ username }}",
     "nav_settings": "Ustawienia",

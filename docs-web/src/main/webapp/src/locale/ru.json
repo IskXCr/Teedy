@@ -32,6 +32,7 @@
     "nav_documents": "Документы",
     "nav_tags": "Теги",
     "nav_users_groups": "Пользователи и группы",
+    "nav_chat": "Чат",
     "error_info": "{{ count }} новая ошибка",
     "logged_as": "Вы вошли как {{ username }}",
     "nav_settings": "Настройки",

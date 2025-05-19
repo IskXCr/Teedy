@@ -32,6 +32,7 @@
     "nav_documents": "文檔",
     "nav_tags": "標籤",
     "nav_users_groups": "用戶 & 群組",
+    "nav_chat": "聊天",
     "error_info": "{{ count }} 新錯誤",
     "logged_as": "以 {{ username }}登錄",
     "nav_settings": "設置",

@@ -22,6 +22,7 @@
       "Document",
       "File",
       "Tag",
+      "ChatMessage",
       "Comment",
       "Share",
       "Acl",

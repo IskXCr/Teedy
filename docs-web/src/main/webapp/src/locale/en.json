@@ -32,6 +32,7 @@
     "nav_documents": "Documents",
     "nav_tags": "Tags",
     "nav_users_groups": "Users & Groups",
+    "nav_chat": "Chat",
     "error_info": "{{ count }} new error{{ count > 1 ? 's' : '' }}",
     "logged_as": "Logged in as {{ username }}",
     "nav_settings": "Settings",
@@ -533,6 +534,7 @@
       "log_updated": "updated",
       "log_deleted": "deleted",
       "Acl": "ACL",
+      "ChatMessage": "Chat message",
       "Comment": "Comment",
       "Document": "Document",
       "File": "File",
@@ -620,6 +622,12 @@
       "title": "Tags",
       "description": "Documents can be organized in tags (which are like super-folders). Create them here."
     }
+  },
+  "chat": {
+    "title": "Chat",
+    "send_message": "Send message",
+    "no_chat": "No chat",
+    "error_loading_chat": "Error loading chat"
   },
   "yes": "Yes",
   "no": "No",
