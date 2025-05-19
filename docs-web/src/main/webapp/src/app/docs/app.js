@@ -181,6 +181,24 @@ angular.module('docs',
         }
       }
     })
+    .state('settings.guestrequest', {
+      url: '/guestrequest',
+      views: {
+        'settings': {
+          templateUrl: 'partial/docs/settings.guestrequest.html',
+          controller: 'SettingsGuestRequest'
+        }
+      }
+    })
+    .state('settings.guestrequest.judge', {
+      url: '/judge/:id',
+      views: {
+        'guestrequest': {
+          templateUrl: 'partial/docs/settings.guestrequest.judge.html',
+          controller: 'SettingsGuestRequestJudge'
+        }
+      }
+    })
     .state('settings.workflow', {
       url: '/workflow',
       views: {
@@ -424,6 +442,15 @@ angular.module('docs',
         'page': {
           templateUrl: 'partial/docs/chat.html',
           controller: 'Chat'
+        }
+      }
+    })
+    .state('guestrequest', {
+      url: '/guestrequest',
+      views: {
+        'page': {
+          templateUrl: 'partial/docs/guestrequest.html',
+          controller: 'GuestRequest'
         }
       }
     });

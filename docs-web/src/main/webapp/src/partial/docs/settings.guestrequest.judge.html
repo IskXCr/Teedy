@@ -1,0 +1,42 @@
+<span class="fas fa-circle-notch fa-spin"></span>
+
+<h2 translate="settings.guestrequest.judge.judge_request_title" translate-values="{ username: request.username }"></h2>
+
+<form class="form-horizontal" name="judgeRequestForm" novalidate autocomplete="off">
+  <div class="form-group" ng-class="{ 'has-error': !judgeRequestForm.userID.$valid && judgeRequestForm.$dirty, success: judgeRequestForm.userID.$valid }">
+    <label class="col-sm-2 control-label" for="inputUserID">{{ 'settings.guestrequest.judge.id' | translate }}</label>
+    <div class="col-sm-7">
+      <input name="userID" type="text" id="inputUserID" required disabled class="form-control"
+             ng-pattern="/^[a-zA-Z0-9_@.-]*$/"
+             ng-minlength="3" ng-maxlength="50" ng-attr-placeholder="{{ 'settings.guestrequest.judge.id' | translate }}" ng-model="request.id"/>
+    </div>
+  </div>
+
+  <div class="form-group" ng-class="{ 'has-error': !judgeRequestForm.userUsername.$valid && judgeRequestForm.$dirty, success: judgeRequestForm.userUsername.$valid }">
+    <label class="col-sm-2 control-label" for="inputUserUsername">{{ 'settings.guestrequest.judge.username' | translate }}</label>
+    <div class="col-sm-7">
+      <input name="userUsername" type="text" id="inputUserUsername" required disabled class="form-control"
+             ng-pattern="/^[a-zA-Z0-9_@.-]*$/"
+             ng-minlength="3" ng-maxlength="50" ng-attr-placeholder="{{ 'settings.guestrequest.judge.username' | translate }}" ng-model="request.username"/>
+    </div>
+  </div>
+
+  <div class="form-group" ng-class="{ 'has-error': !judgeRequestForm.userEmail.$valid && judgeRequestForm.$dirty, success: judgeRequestForm.userEmail.$valid }">
+    <label class="col-sm-2 control-label" for="inputEmail">{{ 'settings.guestrequest.judge.email' | translate }}</label>
+    <div class="col-sm-7">
+      <input name="userEmail" type="email" id="inputEmail" required disabled class="form-control"
+             ng-minlength="1" ng-maxlength="100" ng-attr-placeholder="{{ 'settings.guestrequest.judge.email' | translate }}" ng-model="request.email"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-primary" ng-disabled="request.deleted"  ng-click="judge(true)" ng-disabled="!judgeRequestForm.$valid"></button>
+        <span class="fas fa-pencil-alt"></span> {{ 'settings.guestrequest.judge.approve' | translate }}
+      </button>
+      <button type="button" class="btn btn-danger" ng-disabled="request.deleted" ng-click="judge(false)">
+        <span class="fas fa-trash"></span> {{ 'settings.guestrequest.judge.reject' | translate }}
+      </button>
+    </div>
+  </div>
+</form>

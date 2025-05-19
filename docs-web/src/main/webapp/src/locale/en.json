@@ -32,6 +32,7 @@
     "nav_documents": "Documents",
     "nav_tags": "Tags",
     "nav_users_groups": "Users & Groups",
+    "nav_guest_request": "Guest Request", 
     "nav_chat": "Chat",
     "error_info": "{{ count }} new error{{ count > 1 ? 's' : '' }}",
     "logged_as": "Logged in as {{ username }}",
@@ -276,6 +277,7 @@
     "menu_workflow": "Workflow",
     "menu_users": "Users",
     "menu_groups": "Groups",
+    "menu_guest_requests": "Guest requests",
     "menu_vocabularies": "Vocabularies",
     "menu_configuration": "Configuration",
     "menu_inbox": "Inbox scanning",
@@ -325,6 +327,30 @@
         "disable_totp_btn": "Disable two-factor authentification for this user",
         "disable_totp_title": "Disable two-factor authentication",
         "disable_totp_message": "Are you sure you want to disable two-factor authentication for this user?"
+      }
+    },
+    "guestrequest": {
+      "title": "Guest registration request management",
+      "id": "ID",
+      "username": "Username",
+      "email": "Email",
+      "create_date": "Create date",
+      "processed": "Processed",
+      "approved": "Approved",
+      "judge": {
+        "judge_request_title": "Judge request from \"{{ username }}\"",
+        "reject_guest_request_message": "Do you really want to reject this guest request?",
+        "request_not_found_title": "Request not found",
+        "request_not_found_message": "Active request with specified username is not found",
+        "approve": "Approve",
+        "reject": "Reject",
+        "id": "ID",
+        "username": "Username",
+        "email": "E-mail",
+        "processed": "Processed",
+        "approved": "Approved",
+        "request_success_title": "Request submitted",
+        "request_success_message": "Request submission succeeded"
       }
     },
     "workflow": {
@@ -628,6 +654,11 @@
     "send_message": "Send message",
     "no_chat": "No chat",
     "error_loading_chat": "Error loading chat"
+  },
+  "guestrequest": {
+    "title": "Guest: Request user add",
+    "request_success_title": "Request submitted",
+    "request_success_message": "Request submission succeeded"
   },
   "yes": "Yes",
   "no": "No",

@@ -1,0 +1,2 @@
+create cached table T_GUEST_REQUEST ( REQ_ID_C varchar(36) not null, REQ_USERNAME_C varchar(50) not null, REQ_PASSWORD_HASH_C varchar(60) not null, REQ_EMAIL_C varchar(100) not null, REQ_CREATEDATE_D datetime not null, REQ_APPROVED boolean not null, REQ_DELETEDATE_D datetime, primary key (REQ_ID_C) );
+update T_CONFIG set CFG_VALUE_C = '33' where CFG_ID_C = 'DB_VERSION';

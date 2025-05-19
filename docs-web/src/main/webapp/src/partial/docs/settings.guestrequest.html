@@ -1,0 +1,48 @@
+<h1>
+    <span translate="settings.guestrequest.title"></span>
+</h1>
+
+<div class="row">
+    <div class="col-md-6 well">
+      <table class="table table-hover table-users">
+        <thead>
+          <tr>
+            <th>{{ 'settings.guestrequest.id' | translate }}</th>
+            <th>{{ 'settings.guestrequest.username' | translate }}</th>
+            <th>{{ 'settings.guestrequest.email' | translate }}</th>
+            <th>{{ 'settings.guestrequest.create_date' | translate }}</th>
+            <th>{{ 'settings.guestrequest.processed' | translate }}</th>
+            <th>{{ 'settings.guestrequest.approved' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="request in guest_requests | orderBy: '-create_date'" ng-click="judgeRequest(request)"
+              ng-class="{ active: $stateParams.id == request.id }">
+            <td>
+              <span>{{ request.id }}</span>
+            </td>
+            <td>
+              <span>{{ request.username }}</span>
+            </td>
+            <td>
+              <span>{{ request.email }}</span>
+            </td>
+            <td>
+              <span>{{ request.create_date | date: dateFormat }}</span>
+            </td>
+            <td>
+              <span>{{ request.deleted }}</span>
+            </td>
+            <td ng-style="{'background-color': request.deleted && !request.approved ? 'red' : request.deleted && request.approved ? 'green' : ''}">
+              <span>{{ request.approved }}</span>
+            </td>
+            </tr>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="col-md-8">
+      <div ui-view="guestrequest"></div>
+    </div>
+  </div>
