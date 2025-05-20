@@ -5,55 +5,53 @@ pipeline {
         DOCKER_HUB_CREDENTIALS = credentials('dockerhub_credential')
         DOCKER_IMAGE = 'iskxcr/teedy-app'
         DOCKER_TAG = "${env.BUILD_NUMBER}"
+        DEPLOYMENT_NAME = "hello-node"
+        CONTAINER_NAME = "docs"
+        IMAGE_NAME = "iskxcr/teedy-app:latest"
     }
 
     stages {
-        stage('Build') {
+        stage('Start Minikube') {
             steps {
-                checkout scmGit(
-                     branches: [[name: '*/master']],
-                     extensions: [],
-                     userRemoteConfigs: [[
-                        credentialsId: 'c3f515e7-3c75-4a94-839b-f7e058b23424',
-                        url: 'https://github.com/IskXCr/Teedy.git'
-                     ]]
-                )
-                sh 'mvn -B -DskipTests clean package'
+                sh '''
+                    if ! minikube status | grep -q "Running"; then
+                    echo "Starting Minikube..."
+                    minikube start
+                    else
+                    echo "Minikube already running."
+                    fi
+                '''
             }
         }
 
-        stage('Building image') {
+        // stage('Create deployment') {
+        //     steps {
+        //         sh '''
+        //             kubectl create deployment ${DEPLOYMENT_NAME} --image=${DOCKER_IMAGE}:${DOCKER_TAG}
+        //         '''
+        //     }
+        // }
+
+        stage('Set Image') {
             steps {
-                 script {
-                     docker.build("${env.DOCKER_IMAGE}:${env.DOCKER_TAG}")
-                 }
+                sh '''
+                    echo "Setting image for deployment..."
+                    kubectl set image deployments/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=${IMAGE_NAME}
+                '''
             }
         }
 
-        stage('Upload image') {
+        stage('Verify') {
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_credential') {
-                        docker.image("${env.DOCKER_IMAGE}:${env.DOCKER_TAG}").push()
-                        docker.image("${env.DOCKER_IMAGE}:${env.DOCKER_TAG}").push('latest')
-                    }
-                }
+                // sh 'kubectl rollout status deployments/${DEPLOYMENT_NAME}'
+                sh 'kubectl get pods'
             }
         }
 
-        stage('Run containers') {
-            steps {
-                script {
-                    sh 'docker stop teedy-container-8081 || true'
-                    sh 'docker rm teedy-container-8081 || true'
-
-                    docker.image("${env.DOCKER_IMAGE}:${env.DOCKER_TAG}").run(
-                        '--name teedy-container-8081 -d -p 8081:8080'
-                    )
-
-                    sh 'docker ps --filter "name=teedy-container"'
-                }
-            }
-        }
+        // stage('Expose') {
+            // steps {
+                // sh 'kubectl expose deployments/${DEPLOYMENT_NAME} --type=LoadBalancer --port=8080'
+            // }
+        // }
     }
 }
