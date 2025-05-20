@@ -31,7 +31,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="button" class="btn btn-primary" ng-disabled="request.deleted"  ng-click="judge(true)" ng-disabled="!judgeRequestForm.$valid"></button>
+      <button type="button" class="btn btn-primary" ng-disabled="request.deleted"  ng-click="judge(true)" ng-disabled="!judgeRequestForm.$valid">
         <span class="fas fa-pencil-alt"></span> {{ 'settings.guestrequest.judge.approve' | translate }}
       </button>
       <button type="button" class="btn btn-danger" ng-disabled="request.deleted" ng-click="judge(false)">
